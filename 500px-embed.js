@@ -1,6 +1,5 @@
-ndow.pxembed = {};
+window.pxembed = {};
 
-// bind polyfill -- thank you underscore
 window.pxembed._bind = function(func, context) {
   var args, bound, slice;
   slice = Array.prototype.slice;
@@ -30,9 +29,6 @@ window.pxembed.findElementWith = function (nodeList, predicate) {
 };
 
 window.pxembed.pxImagePredicate = function (image) {
-  if (/\/806614\/photos\/photos\.500px\.net\//.test(image.src)) {
-    return true;
-  }
   var parser = document.createElement("a");
   parser.href = image.src;
   return parser.hostname.match("500px");
@@ -111,7 +107,6 @@ window.pxembed.init = (function() {
     if (attributionLink == null) { continue; }
     replacement = window.pxembed.createBasicEmbeddable();
     replacement.onload = window.pxembed._bind(window.pxembed.onEmbeddedLoad, this, anchor, embedElement, replacement);
-    //"http://localhost:3000/photo/222/testphoto111--by-user253-accoun" -> "http://localhost:3000/photo/222/embed"
     replacement.src = attributionLink.href.replace(/(\/photo\/\d+)(\/.*)?/, "$1/embed").replace(/^http:/, "https:")
     anchor.insertBefore(replacement, embedElement);
     window.pxembed.references.push(replacement);
