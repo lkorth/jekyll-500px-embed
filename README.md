@@ -23,6 +23,8 @@ A consumer key can be obtained by [creating an app with 500px](https://500px.com
 
 ## Usage
 
+Supply the photo id you wish to embed to the 500px tag. The photo id can be found in the photo's url on [http://500px.com](http://500px.com).
+
 ```markdown
 {% 500px 89255597 %}
 ```
