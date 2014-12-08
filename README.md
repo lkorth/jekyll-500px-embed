@@ -29,4 +29,4 @@ A consumer key can be obtained by [creating an app with 500px](https://500px.com
 
 ## Example
 
-[https://lukekorth.com/blog/jekyll-500px-embed/](https://lukekorth.com/blog/jekyll-500px-embed/)
+[https://lukekorth.com/blog/500px-embedding-for-jekyll/](https://lukekorth.com/blog/500px-embedding-for-jekyll/)
