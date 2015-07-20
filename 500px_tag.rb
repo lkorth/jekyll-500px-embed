@@ -13,21 +13,28 @@ require 'json'
 module Jekyll
   class FiveHundredPxTag < Liquid::Tag
 
+    CONSUMER_KEY_FILE = "500px_consumer_key_file"
+
     def initialize(tag_name, photo_id, token)
       super
       @photo_id = photo_id.strip
     end
 
     def render(context)
-      consumer_key = File.read(context.registers[:site].config['500px_consumer_key_file']).strip
-      photo = fetch_photo(@photo_id, consumer_key)
+      if context.registers[:site].config[CONSUMER_KEY_FILE] == nil
+        ""
+      else
+        puts "No 500px consumer key found" unless File.exists?(context.registers[:site].config[CONSUMER_KEY_FILE])
+        consumer_key = File.read(context.registers[:site].config[CONSUMER_KEY_FILE]).strip
+        photo = fetch_photo(@photo_id, consumer_key)
 
-      <<-EOF
+        <<-EOF
 <div class="pixels-photo">
   <p><img src="#{photo['image_url']}" alt="#{photo['name']} by #{photo['user']['fullname']} on 500px"></p>
   <a href="https://500px.com/#{photo['url']}">#{photo['name']} by #{photo['user']['fullname']} on 500px</a>
 </div>
-      EOF
+        EOF
+      end
     end
 
     def fetch_photo(photo_id, consumer_key)
