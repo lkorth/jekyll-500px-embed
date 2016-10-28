@@ -29,9 +29,11 @@ module Jekyll
         photo = fetch_photo(@photo_id, consumer_key)
 
         <<-EOF
-<div class="pixels-photo">
-  <p><img src="#{photo['image_url']}" alt="#{photo['name']} by #{photo['user']['fullname']} on 500px"></p>
-  <a href="https://500px.com/#{photo['url']}">#{photo['name']} by #{photo['user']['fullname']} on 500px</a>
+<div class="embeded-five-hundred-px-photo">
+  <div class="pixels-photo">
+    <p><img src="#{photo['image_url']}" alt="#{photo['name']} by #{photo['user']['fullname']} on 500px"></p>
+    <a href="https://500px.com/#{photo['url']}">#{photo['name']} by #{photo['user']['fullname']} on 500px</a>
+  </div>
 </div>
         EOF
       end
