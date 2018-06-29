@@ -1,6 +1,10 @@
 jekyll-500px-embed
 ==================
 
+# End of Life
+
+On June 15th, 2018 500px [shut off their API](https://support.500px.com/hc/en-us/articles/360002435653-API-). jekyll-500px-embed used the 500px API to retrieve information about a photo in order to render the embedded html and no longer functions without the API.
+
 ## Installation
 
 1. Copy `500px_tag.rb` into your site's `plugins` directory.
